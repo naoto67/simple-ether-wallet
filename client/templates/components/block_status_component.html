@@ -1,0 +1,27 @@
+<template name="blockStatusComponent">
+ <div class="panel panel-default"> 
+   <div class="panel-heading">
+     <h4>Block Status</h4>
+   </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Block Number</th>
+          <th>{{latestBlockNum}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Block Hash</th>
+          <th>{{latestBlockHash}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Miner</th>
+          <th>{{latestBlockMiner}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Mined Datetime</th>
+          <th>{{latestBlockDatetime}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
