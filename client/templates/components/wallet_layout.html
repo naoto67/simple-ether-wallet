@@ -1,0 +1,16 @@
+<template name="walletLayout">
+  <nav class="navbar navbar-default">
+    <div class="container-fulid">
+      <div class="navbar-header">
+      <a class="navbar-brand" href="{{pathFor 'dashboard'}}">Simple Ether Wallet</a>
+      </div>
+      <ul class="navbar navbar-nav">
+        <li class="{{activeIfCurrent 'dashboard'}}"><a href="{{pathFor 'dashboard'}}">DashBoard</a></li>
+        <li class="{{activeIfCurrent 'send'}}"><a href="{{pathFor 'send'}}">Send Ether</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="container-fluid">
+    {{> yield }}
+  </main>
+</template>
