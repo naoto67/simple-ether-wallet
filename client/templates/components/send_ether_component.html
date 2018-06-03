@@ -1,0 +1,52 @@
+<template name="sendEtherComponent">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h4>Send Ether</h4>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal">
+      {{> sendInputTemplate inputId="f-addr" labelStr="From:" placeholder="0x12345abc..."}}
+      {{> sendInputTemplate inputId="t-addr" labelStr="To:" placeholder="0x12345abc..."}}
+      {{> sendInputTemplate inputId="amount" labelStr="Amount(ETH):" placeholder="0.0"}}
+      <input type="submit" value="submit" class="btn btn-primary col-md-offset-6">
+    </form>
+  </div>
+  {{> sendConfirmModalTemplate}}
+</template>
+
+<template name="sendInputTemplate">
+  <div class="form-group">
+    <label class="control-label col-md-3" for="{{inputId}}">{{labelStr}}</label>
+    <div class="controls col-md-6">
+      <input type="text" name="{{inputId}}" id="{{inputId}}" 
+             value="" placeholder="{{placeholder}}" class="form-control">
+    </div>
+  </div>
+</template>
+
+<template name="sendConfirmModalTemplate">
+  <div class="modal fade" id="sendConfirmModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header alert-danger">
+          <h4 class="modal-title">Confirmation</h4>
+        </div>
+        <div class="modal-body">
+          <h4>Send {{sendAmountInEther}} ETHER</h4>
+        </div>
+        <ul>
+          <li><b>From:</b>{{fAddr}}</li>
+          <li><b>To:</b>{{tAddr}}</li>
+          <li><b>Estimated Fee:</b>{{fee}} ETHER</li>
+        </ul>
+        <br/>
+        <h4>Do you send the Ether?</h4>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" id="send">Yes</button>
+        <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</template>
