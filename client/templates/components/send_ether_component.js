@@ -80,6 +80,14 @@ Template.sendConfirmModalTemplate.events({
     }, function(error, txHash){
       console.log("Transaction Hash: ", txHash, error);
       if(!error){
+        Transactions.upsert(txHash, {$set: {
+          amount: Session.get("sendEther.fundInfo").amount,
+          from: Session.get("sendEther.fundInfo").fAddr,
+          to: Session.get("sendEther.fundInfo").tAddr,
+          timestamp: getCurrentUnixTime(),
+          transactionHash: txHash,
+          fee: estimatedFeeInWei().toString(10),
+        }});
         alert("Ether Transfer Succeeded");
       }else{
         alert("Ether Transfer Failed");

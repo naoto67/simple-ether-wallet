@@ -1,7 +1,6 @@
 Router.configure({
   layoutTemplate: 'walletLayout'
 });
-
 Router.route('/', function(){
   this.redirect('/dashboard');
 });

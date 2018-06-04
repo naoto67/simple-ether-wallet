@@ -11,3 +11,12 @@ EthAccounts.init();
 //Eth Block init
 EthBlocks.init();
 
+//Session変数
+initSessionVars();
+
+//Transaction Collection の初期化
+Transactions = new Mongo.Collection('transactions', {connection: null});
+
+observeNode();
+
+observeTransactions();
