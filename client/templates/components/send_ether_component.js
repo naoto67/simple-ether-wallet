@@ -67,3 +67,26 @@ Template.sendConfirmModalTemplate.helpers({
     return web3.fromWei(estimatedFeeInWei(),'ether').toString(10);
   }
 });
+
+//sendConfirmModal の yesが押された時のイベント
+Template.sendConfirmModalTemplate.events({
+  'click #send': function(e){
+    e.preventDefault();
+    var fundInfo = Session.get("sendEther.fundInfo");
+    web3.eth.sendTransaction({
+      from: fundInfo.fAddr,
+      to: fundInfo.tAddr,
+      value: fundInfo.amount
+    }, function(error, txHash){
+      console.log("Transaction Hash: ", txHash, error);
+      if(!error){
+        alert("Ether Transfer Succeeded");
+      }else{
+        alert("Ether Transfer Failed");
+      }
+    });
+    $('#sendConfirmModal').modal('hide');
+  }
+
+});
+
